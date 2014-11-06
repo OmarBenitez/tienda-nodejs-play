@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import com.google.gson.Gson;
 import java.util.List;
 import models.Producto;
 import play.mvc.Controller;
@@ -24,6 +25,18 @@ public class Productos extends Controller {
         Producto producto = Producto.findById(uuid);
         notFoundIfNull(producto);
         renderJSON(producto);
+    }
+    
+    public static void add(){
+        
+        Gson g = new Gson();
+        
+        Producto p = g.fromJson(params.get("body"), Producto.class);
+        p.urlImg = p.urlImg.equals("") ? Producto.IMG_DEFAULT : p.urlImg;
+        p.validateAndSave();
+        
+        renderJSON(p);
+        
     }
 
 }

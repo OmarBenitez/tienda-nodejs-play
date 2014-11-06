@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       Application.index
 GET     /productos.json                         Productos.json
+POST    /add/prod                               Productos.add
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

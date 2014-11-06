@@ -1,3 +1,5 @@
+var socket = io.connect('http://localhost:1337/');
+
 angular.module('tienditaApp', ['ngResource']).config(function($routeProvider) {
     $routeProvider
             .when('/', {
@@ -32,11 +34,16 @@ angular.module('tienditaApp', ['ngResource']).config(function($routeProvider) {
 
 }).controller('main', function($scope) {
 
-}).controller('home', function($scope, appFactory) {
+}).controller('home', function($scope, $rootScope, appFactory) {
     $scope.prods = [];
     appFactory.load();
     $scope.$on('productos', function() {
         $scope.prods = appFactory.data;
+    });
+    socket.on('updateProds', function(prod) {
+        console.log(prod);
+        $scope.prods.push(prod);
+        $rootScope.$apply();
     });
 }).controller('detalle', function($scope, appFactory) {
     $scope.prods = [];
@@ -44,10 +51,10 @@ angular.module('tienditaApp', ['ngResource']).config(function($routeProvider) {
     $scope.$on('productos', function() {
         $scope.prods = appFactory.data;
     });
-}).controller('nuevo', function($scope) {
-    $scope.send = function(dato){
-        
+}).controller('nuevo', function($scope, $http) {
+    $scope.send = function(dato) {
+        $http.post('/add/prod', dato).success(function(data, status) {
+            socket.emit('newProd', data);
+        });
     };
-})
-
-        ;
+});

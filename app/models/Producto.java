@@ -11,6 +11,8 @@ import play.modules.morphia.Model;
 @Entity
 public class Producto extends Model{
 
+    public final static String IMG_DEFAULT = "http://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+    
     @Required
     public String nombre;
 
