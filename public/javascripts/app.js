@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource']).config(function($routeProvider) {
+angular.module('tienditaApp', ['ngResource']).config(function($routeProvider) {
     $routeProvider
             .when('/', {
                 templateUrl: 'public/views/home.html'
@@ -6,6 +6,10 @@ angular.module('app', ['ngResource']).config(function($routeProvider) {
             .when('/detalle/', {
                 templateUrl: 'public/views/detalle.html'
                 , controller: 'detalle'
+            })
+            .when('/add/', {
+                templateUrl: 'public/views/new.html'
+                , controller: 'nuevo'
             })
             .otherwise({redirectTo: '/'});
 }).factory('appFactory', function($http, $rootScope) {
@@ -40,4 +44,10 @@ angular.module('app', ['ngResource']).config(function($routeProvider) {
     $scope.$on('productos', function() {
         $scope.prods = appFactory.data;
     });
-});
+}).controller('nuevo', function($scope) {
+    $scope.send = function(dato){
+        
+    };
+})
+
+        ;

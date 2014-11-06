@@ -1,0 +1,35 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Nuevo Producto</legend>
+    </fieldset>
+    <div class="control-group">
+        <label class="control-label" for="object.nombre">Nombre</label>
+        <div class="controls">
+            <input type="text" id="object_nombre" placeholder="Nombre" ng-model="object.nombre">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="object.descripcion">Descripcion</label>
+        <div class="controls">
+            <input type="text" id="object_descripcion" placeholder="Descripcion" ng-model="object.descripcion">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="object.precio">Precio</label>
+        <div class="controls">
+            <input type="number" id="object_precio" placeholder="Precio" ng-model="object.precio">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="object.imgUrl">Imagen</label>
+        <div class="controls">
+            <input type="text" id="object_imgUrl" placeholder="Imagen" ng-model="object.imgUrl">
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn" ng-click="send(object)">Crear</button>
+        </div>
+    </div>
+</form>
+<img ng-src="{{object.imgUrl}}" class="span6">
