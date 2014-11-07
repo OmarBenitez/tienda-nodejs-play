@@ -55,6 +55,7 @@ angular.module('tienditaApp', ['ngResource']).config(function($routeProvider) {
     $scope.send = function(dato) {
         $http.post('/add/prod', dato).success(function(data, status) {
             socket.emit('newProd', data);
+            $scope.object = {};
         });
     };
 });

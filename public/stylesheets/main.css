@@ -2,3 +2,36 @@
 .brand img {
     height: 60px;
 }
+
+.list {
+    /* Prevent vertical gaps */
+    line-height: 0;
+
+    -webkit-column-count: 3;
+    -webkit-column-gap:   3px;
+    -moz-column-count:    3;
+    -moz-column-gap:      3px;
+    column-count:         3;
+    column-gap:           3px;
+}
+.list .item {
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+
+    .list {
+        /* Prevent vertical gaps */
+        line-height: 0;
+        -webkit-column-count:   1;
+        -webkit-column-gap:     3px;
+        -moz-column-count:    1;
+        -moz-column-gap:      3px;
+        column-count:         1;
+        column-gap:           3px;
+    }
+
+}
