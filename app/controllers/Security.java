@@ -11,10 +11,11 @@ public class Security extends Secure.Security {
 
     static boolean authenticate(String email, String password) {
         Usuario user = Usuario.find("email", email).first();
-        if(user == null){
-            //
+        System.out.println(user);
+        if (user == null) {
+            flash.error("secure.error", user);
         } else {
-            if(user.password.equalsIgnoreCase(DigestUtils.md5Hex(password))){
+            if (user.password.equalsIgnoreCase(DigestUtils.md5Hex(password))) {
                 return true;
             } else {
                 flash.error("secure.error", user);
@@ -22,5 +23,5 @@ public class Security extends Secure.Security {
         }
         return false;
     }
-    
+
 }

@@ -17,10 +17,9 @@ public class Perfil extends Model {
 
     public List<Permiso> permisos;
 
-    public Perfil(String clave, String descripcion, List<Permiso> permisos) {
+    public Perfil(String clave, String descripcion) {
         this.clave = clave;
         this.descripcion = descripcion;
-        this.permisos = permisos;
     }
 
     public Perfil() {

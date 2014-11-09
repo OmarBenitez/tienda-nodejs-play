@@ -4,4 +4,8 @@ require:
     - play
     - play -> morphia 1.2.12
     - play -> secure
+    - play -> sass 1.1
+    - play -> paginate 0.12
     - play -> crud
+    - net.sf.flexjson -> flexjson 2.1
+    - org.json -> json 20090211

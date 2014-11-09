@@ -14,6 +14,8 @@
         <link href="@{'public/css/flat-ui.css'}" rel="stylesheet">
 
         <link rel="stylesheet" media="screen" href="@{'/public/css/animate.css'}">
+        
+        <link rel="stylesheet" href="@{'/public/css/font-awesome.css'}"/>
 
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
 
@@ -28,7 +30,7 @@
         <script src="@{'public/js/vendor/jquery.min.js'}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="@{'public/js/flat-ui.min.js'}"></script>
-        <script src="@{Application.ioAsset()}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="http://localhost:1337/socket.io/socket.io.js" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
         <script src="@{'/public/javascripts/app.js'}" type="text/javascript" charset="${_response_encoding}"></script>

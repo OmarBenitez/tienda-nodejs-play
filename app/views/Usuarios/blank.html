@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'Crear Usuario' /}
+
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+
+            <div class="login-box clearfix animated flipInY">
+                <div class="page-icon animated bounceInDown">
+                    <img src="@{'public/img/icons/png/user-icon.png'}" alt="Key icon">
+                </div>
+                <hr>
+                <div class="login-form">
+                    <!-- Start Error box -->
+                    <div class="alert alert-danger hide">
+                        <button type="button" class="close" data-dismiss="alert"> ×</button>
+                        <h4>Error!</h4>
+                        Usuario y/o password invalidos
+                    </div> <!-- End Error box -->
+                    <form action="@{Usuarios.create()}" method="POST" role="form" name="form">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo" class="form-control" required ng-model="email"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control" required ng-model="nombre"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" class="form-control" required ng-model="apellidoPaterno"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" class="form-control" required ng-model="apellidoMaterno"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Contraseña" class="form-control" required="" ng-model="password"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Confirmar contraseña" class="form-control" required="" ng-model="password2"> 
+                        </div>
+                        <button type="submit" class="btn btn-login btn-inverse" ng-disabled="form.$invalid">Registrar</button> 
+                    </form>	
+                </div> 			        	
+            </div>
+        </div>
+    </div>
+</div>

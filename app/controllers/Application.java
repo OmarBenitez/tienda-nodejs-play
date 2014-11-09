@@ -14,8 +14,4 @@ public class Application extends Controller {
         render();
     }
 
-    public static void ioAsset() {
-        redirect("http://localhost:1337/socket.io/socket.io.js");
-    }
-
 }
