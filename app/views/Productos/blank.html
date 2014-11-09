@@ -11,11 +11,16 @@
         </h2>
         #{form action:@create(), enctype :'multipart/form-data'}
 
-            #{crud.form fields:['nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
-            #{/crud.form}
-            
-            <button type="submit"> Aceptar</button>
-            
+        #{crud.form fields:['nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
+
+        #{crud.custom 'oferta'}
+        <input type="hidden" value="${object.oferta._id}" name ="object.oferta._id">
+        #{/crud.custom}
+
+        #{/crud.form}
+
+        <button type="submit"> Aceptar</button>
+
         #{/form}
     </div>
 </div>

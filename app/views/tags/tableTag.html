@@ -1,0 +1,70 @@
+<div id="tabla-data" class="in">      
+    <div class="table-responsive">
+        #{if _objects.size() == 0}
+            <div class="alert alert-info nota" >
+                <i class="fa fa-info-circle"></i> &{'no-hay-elementos'}
+            </div>
+        #{/if}
+        #{else}
+            <div>
+                <table class="table table-hover table-striped table-datos">
+                    <thead>
+                        <tr>
+                            %{
+                                for(p in _fields){
+                                    }%
+                                        <th> &{p} </th>
+                                    %{
+                                }
+                            }%
+                        </tr>
+                    </thead>
+                    <tbody>
+                        #{paginate.list items:_objects, as:'object'}
+                            <tr class="odd">   
+                                %{
+                                    for(p in _fields){
+                                        if(object.hasProperty(p)){
+                                            if(object."$p" instanceof Boolean){
+                                                }%
+                                                <td>
+                                                    #{switchFieldCustom disabled:true, name:"$p", value:(object ? object."$p" : false), id:object?.id /}
+                                                </td>
+                                                %{
+                                            }else if(object."$p" instanceof Date){
+                                                out.print('<td>' + object."$p".format('dd/MM/yyyy') + '</td>')
+                                            }
+                                            else if("formula".equals(p)) {
+                                                out.print('<td>' + '$$' + object."$p" + '$$' + '</td>')
+                                            }else if("clave".equals(p)){                                            
+                                                }%                                                 
+                                                    <td><a href="@{show(object.id)}"> ${object."$p"} </a></td>
+                                                %{
+                                            }else if("costo".equals(p)){                                            
+                                                }%                                                 
+                                                    <td>${object."$p".formatCurrency('MXN').raw()}</td>
+                                                %{
+                                            }else if(object."$p" instanceof String){
+                                                out.print('<td>' + object."$p" + '</td>')
+                                            } else if(object."$p" instanceof Enum){
+                                                out.print('<td>' + object."$p".descripcion + '</td>')
+                                            }else{
+                                                out.print('<td>' + object."$p" + '</td>')
+                                            }
+                                        }else if("".equals(p)){
+                                            }%
+                                            <td>
+                                                #{doBody /}
+                                            </td> 
+                                            %{
+                                        }
+                                    }
+                                }%
+                            </tr>
+                        #{/paginate.list}
+                    </tbody>
+                </table>
+            </div>
+        #{/else}
+     </div>
+</div>

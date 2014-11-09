@@ -1,0 +1,112 @@
+
+<div class="tablas-info">    
+    <div class="tabla-titulo">
+        <h2 class="titulo-lg"><i class="${_icon}"></i> &{'catalogo'} <strong>&{_title}</strong>#{if _parentId && !_parentId.getClaveCompleta().equals("")} (${_parentId.getClaveCompleta()} - ${_parentId.descripcion})#{/if}</h2>
+        <h2 class="titulo-sm">
+            <strong rel="tooltip" data-placement="top" data-original-title="${_title}">
+                <i class="${_icon}"></i>
+            </strong>
+        </h2>
+        <div class="tabla-buttons">
+            <a class="button-adicional" href="#" data-toggle="collapse" data-target="#tabla-data" rel="tooltip" data-placement="top" data-original-title="&{'colapsar'}">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <a class="button-adicional" id="dropdownMenu2" href="#responsive-bitacora" rel="tooltip" data-placement="top" data-toggle="modal" data-original-title="&{'bitacora'}">
+                <i class="fa fa-history"></i>
+            </a>
+            <a href="@{blank(_parentId.id)}" class="btn btn-primary btn-sm btn-new"><i class="fa fa-plus"></i> &{'nuevo'}</a>
+            <a href="@{blank(_parentId.id)}" class="btn btn-primary btn-sm btn-new btn-new-responsive" rel="tooltip" data-placement="top" data-original-title="&{'nuevo'}">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div id="tabla-data" class="in">        
+        <div class="table-responsive tabla">
+            #{if _objects.size() == 0}
+                <div class="alert alert-info nota" >
+                    <i class="fa fa-info-circle"></i> &{'no-hay-elementos'}
+                </div>
+             #{/if}
+             #{else}
+                <div>
+                    <table class="table table-hover table-striped table-datos">
+                        <thead>
+                            <tr>
+                                %{
+                                    for(p in _fields){
+                                        }%
+                                            <th> &{p} </th>
+                                        %{
+                                    }
+                                }%
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #{paginate.list items:_objects, as:'object'}
+                                <tr class="odd">   
+                                    %{
+                                        for(p in _fields){
+                                            if(object.hasProperty(p)){
+                                                if(object."$p" instanceof Boolean){
+                                                    }%
+                                                    <td>
+                                                        #{switchFieldCustom disabled:true, name:"$p", value:(object ? object."$p" : false), id:object?.id /}
+                                                    </td>
+                                                    %{
+                                                }else if(object."$p" instanceof Date){
+                                                    out.print('<td>' + object."$p".format('dd/MM/yyyy') + '</td>')
+                                                }
+                                                else if("formula".equals(p)) {
+                                                    out.print('<td>' + '$$' + object."$p" + '$$' + '</td>')
+                                                }else if("clave".equals(p)){                                            
+                                                    }%                                                 
+                                                        <td><a href="@{show(object.id)}"> ${object."$p"} </a></td>
+                                                    %{
+                                                }else if("costo".equals(p)){                                            
+                                                    }%                                                 
+                                                        <td>${object."$p".formatCurrency('MXN').raw()}</td>
+                                                    %{
+                                                }else if(object."$p" instanceof String){
+                                                    out.print('<td>' + object."$p" + '</td>')
+                                                } else if(object."$p" instanceof Enum){
+                                                    out.print('<td>' + object."$p".descripcion + '</td>')
+                                                }else{
+                                                    out.print('<td>' + object."$p" + '</td>')
+                                                }
+                                            }else if("".equals(p)){
+                                                }%
+                                                <td>
+                                                    #{doBody /}
+                                                </td> 
+                                                %{
+                                            }
+                                        }
+                                    }%
+                                </tr>
+                            #{/paginate.list}
+                        </tbody>
+                    </table>     
+                </div>
+             #{/else}
+         </div>
+    </div>
+</div>
+
+<div id="responsive-bitacora" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title"><i class="fa fa-history"></i> &{'bitacora-de'} <strong>&{_title}</strong></h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group floating-label-localidades">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-perfil">&{'cerrar'}</button>
+    </div>
+</div>

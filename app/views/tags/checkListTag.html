@@ -1,0 +1,60 @@
+<div class="tablas-info">
+    <div class="tabla-titulo">
+        <h2 class="titulo-lg"><i class="${_icon}"></i> %{out.print(play.i18n.Messages.get(_relacion1))}% <strong>(%{out.print(play.i18n.Messages.get(_relacion2))}%)</strong></h2>
+        <h2 class="titulo-sm"><strong rel="tooltip" data-placement="top" data-original-title="%{out.print(play.i18n.Messages.get(_relacion1))}% (%{out.print(play.i18n.Messages.get(_relacion2))}%)"><i class="fa fa-sliders"></i></strong></h2>
+
+        <div class="tabla-buttons">            
+            <a class="button-adicional" href="#" data-toggle="collapse" data-target="#tabla-data" rel="tooltip" data-placement="top" data-original-title="&{'colapsar'}">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <a class="button-adicional" id="dropdownMenu2" data-toggle="dropdown" rel="tooltip" data-placement="top" data-original-title="&{'mas_acciones'}">
+                <i class="fa fa-wrench"></i>
+            </a>
+            <button class="btn btn-sm btn-primary btn-save" type="submit"><i class="fa fa-download"></i> &{'crud.save'}</button>
+        </div>
+    </div>
+
+    <div id="tabla-data" class="in">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-datos">
+                <thead>
+                    <tr>
+                       %{
+                            for(p in _fields){
+                                }%
+                                    <th> &{p} </th>
+                                %{
+                            }
+                        }%
+                    </tr>
+                </thead>
+                <tbody>
+                    #{list items:_objects, as:'object'}
+                        <tr>
+                            <input name="objects[${object_index-1}].id" value="${object.id}" type="hidden"/>
+                            %{
+                                for(p in _fields){
+                                    if(object.hasProperty(p)){
+                                        if(_field.equals(p)){
+                                        }%
+                                          <td>
+                                               <input type="checkbox" name="objects[${object_index-1}].${_field}" class="settings-switcher"  data-class="switcher-sm" ${object.getAt(_field) ? 'checked' : ''}/>
+                                          </td>
+                                        %{
+                                        }else {
+                                            }%
+                                                <input name="objects[${object_index-1}].${p}" value="${object.getAt(p)}" type="hidden"/>
+                                            %{
+                                            out.print('<td>' + object."$p" + '</td>')
+                                        }
+                                    }
+                                }
+                            }%
+                        </tr>
+                    #{/list}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

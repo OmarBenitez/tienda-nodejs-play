@@ -1,0 +1,12 @@
+#{field 'object.' + _name}
+    <div class="form-group-box">
+        <div class="form-group floating-label-form-group floating-label-form-group-with-focus-{{${_name}.length > 0}} floating-label-form-group-with-value-{{${_name}.length > 0}}">
+            <label for="${field.id}" class="col-md-2 control-label">&{_name}:</label>
+            <div class="col-md-8">
+                <input class="form-control label-float datepicker-vigencia #{ifError field.name} form-group-error-${field.error.raw().toString().replaceAll("\\s", "")} #{/ifError}" 
+                       id="${field.id}" name="${field.name}" data-value="${_value?.format('yyyy-MM-dd')}" placeholder="&{_name}" 
+                       ng-model="${_name}">
+            </div>
+        </div>
+    </div>
+#{/}

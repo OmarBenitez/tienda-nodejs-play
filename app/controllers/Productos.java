@@ -8,10 +8,13 @@ package controllers;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import models.Oferta;
 import models.Producto;
 import models.enums.SubTipo;
 import models.enums.TipoProducto;
+import play.modules.morphia.Model;
 import play.modules.paginate.ValuePaginator;
+import play.mvc.After;
 
 /**
  *
@@ -19,21 +22,18 @@ import play.modules.paginate.ValuePaginator;
  */
 public class Productos extends CRUD  {
 
-    public static void json() {
-        List<Producto> productos = Producto.findAll();
-        renderJSON(productos);
+    @After(only = {"create", "save"})
+    public static void redirect(){
+        String id = params.get(String.format("object.%s._id", "oferta"));
+        Productos.list(id);
     }
-
-    public static void getProducto(String uuid) {
-        Producto producto = Producto.findById(uuid);
-        notFoundIfNull(producto);
-        renderJSON(producto);
-    }
-
-    public static void list(){
-        List<Producto> productos = Producto.findAll();
+    
+    public static void list(String id){
+        Oferta oferta = Oferta.findById(id);
+        oferta = oferta == null ? Oferta.getDefault() : oferta;
+        List<Producto> productos = oferta.getProds();
         ValuePaginator producto = new ValuePaginator(productos);
-        render(producto);
+        render(producto, oferta);
     }
 
     public static void save(String nombre, String descripcion, String precio, String img){
@@ -43,21 +43,12 @@ public class Productos extends CRUD  {
         producto.validateAndSave();
     }
     
-    public static void add(){
-        
-        Gson g = new Gson();
-        
-        Producto p = g.fromJson(params.get("body"), Producto.class);
-        p.urlImg = p.urlImg.equals("") ? Producto.IMG_DEFAULT : p.urlImg;
-        p.validateAndSave();
-        
-        renderJSON(p);
-        
-    }
 
-    public static void blank(){
-        List<SubTipo> tipoProductos = new ArrayList<>();
-        render(tipoProductos);
+    public static void blank(String id){
+        Oferta oferta = Oferta.findById(id);
+        Producto object = new Producto();
+        object.oferta = oferta;
+        render(object);
     }
 
 }

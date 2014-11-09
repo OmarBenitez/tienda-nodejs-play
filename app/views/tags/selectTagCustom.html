@@ -1,0 +1,11 @@
+#{field 'object.' + _name}
+<div class="form-group-box">
+    <div class="form-group floating-label "> 
+        <label for="${field.id}" class="col-md-2 control-label">&{_name}</label>
+        <div class="col-md-8">
+            #{select 'object.' + _name+'._id', items:_items, id:field.id, valueProperty:'id', value:_value, class:'form-control input-sm select selectpicker show-tick',/}
+            <span class="error">#{ifError field.name}form-group-error-${field.error.raw().toString().replaceAll("\\s", "")}#{/ifError}</span>
+        </div>
+    </div>
+</div>
+#{/}

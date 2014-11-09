@@ -1,0 +1,22 @@
+#{field 'object.' + _name}
+<div class="form-group-box">
+    <div class="form-group floating-label-form-group #{if !_id} floating-label #{/if}">
+        <label for="${field.id}" class="col-md-2 control-label">
+            &{_name}:
+        </label>
+        <div class="col-md-8">
+            <input id="${field.id}" class="filestyle" type="file" data-buttonText="" data-buttonName="btn-primary" name="${field.name}" />
+            #{ifError field.name}
+            <span class="error">${field.error.raw()}</span>
+            #{/ifError}
+            #{if _value && _value.exists() && _id}
+            <a class="currentAttachment" href="@{attachment(_id, _name)}">
+                <span class="badge badge-primary">
+                    &{'descargar-archivo'} (${_value.length().formatSize()})
+                </span>
+            </a>
+            #{/if}
+        </div>
+    </div>
+</div>
+#{/field}

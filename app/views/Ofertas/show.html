@@ -1,0 +1,27 @@
+#{extends 'CRUD/layout.html' /}
+<ul class="breadcrumb breadcrumb-page">
+    <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
+    <li><a href="@{Ejercicios.list()}"><i class="fa fa-clock-o"></i> &{'ejercicios'}</a> </li>
+    <li class="active"><a href="@{Ejercicios.show(object.id)}"><i class="fa fa-pencil"></i> &{'editar'}</a> </li>
+</ul>
+<div class="form" ng-app>
+    #{formTitleTag icon:'fa fa-clock-o', type:'editar', title:'ejercicio' /}
+    #{form action:@save(object._key()), enctype:'multipart/form-data', class:'form-horizontal', class:'form-horizontal'}
+        <div id="form-data" class="in">
+            #{crud.form fields:['clave','descripcion']}
+                <div class="row">
+                    #{crud.custom 'clave'}
+                        #{textFieldCustom name:'clave', divClassValue:'col-md-4', value:object?.clave, edit:true/}
+                    #{/crud.custom}
+                    #{crud.custom 'descripcion'} 
+                        #{textFieldCustom name:'descripcion', divClassValue:'col-md-8', value:object?.descripcion, edit:true/}
+                    #{/crud.custom}
+                </div>            
+            #{/crud.form}    
+        </div>
+        <div class="form-footer">
+            #{noteTag 'nota-ejercicio' /}
+            <button class="btn btn-primary" type="submit" name="_save" ><i class="fa fa-download"></i> &{'crud.save', type.modelName}</button>
+        </div>
+    #{/form}
+</div>

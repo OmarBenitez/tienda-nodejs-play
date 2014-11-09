@@ -1,0 +1,28 @@
+<div class="paginacion">
+    <div class="total-registros">
+        %{
+        def objectName
+        def n
+        if (_singular != null && _plural != null && _objects != null) {
+            n = _objects.size()
+            if (n == 1) {
+                objectName = _singular
+            } else {
+                objectName = _plural
+            }
+        } else {
+            objectName = !_arg.size() ? 
+                    _caller.type.name : 
+                    (_arg.size() > 1 ? _caller.type.name : _arg.getAt(0).getClass().getSimpleName())
+        }
+        def objectCount = n != null ? n : _arg.size()
+        }%
+        <h2><strong>&{'crud.list.size', objectCount, objectName}</strong></h2>
+    </div>
+
+    #{if _objects.size() > 0}
+        <div class="paginacion-count">
+            #{paginate.controls items: ( _objects != null ? _objects : _arg ) /}
+        </div>
+    #{/if}
+</div>

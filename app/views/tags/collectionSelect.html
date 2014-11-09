@@ -1,0 +1,11 @@
+#{field 'object.' + _name}
+    <div class="form-group-box">
+        <div class="form-group floating-label-form-group">
+            <label for="object_modulo" class="col-md-2 control-label">&{_name}</label>
+            <div class="col-md-8">
+                *{select 'object.modulo', items:models.security.enums.Modulo.values(), id:'object_modulo', labelProperty:'descripcion', class:'form-control input-sm select selectpicker show-tick'/}*
+                #{select "object.${_name}._id", items:_data, id:"object_${_name}", valueProperty:"${_value}", labelProperty:'descripcion',value:_name, class:'form-control input-sm select selectpicker show-tick'/}
+            </div>
+        </div>
+    </div>
+#{/}

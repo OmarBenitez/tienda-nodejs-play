@@ -6,9 +6,14 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /productos.json                         Productos.json
-POST    /add/prod                               Productos.add
-GET     /productos/list                         Productos.list
+
+GET     /productos/list/{id}                    Productos.list
+GET     /productos/blank/{id}                    Productos.blank
+GET     /productos/show/{id}                    Productos.show
+
+
+GET     /ofertas/productos/list/{id}            Ofertas.getProds
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

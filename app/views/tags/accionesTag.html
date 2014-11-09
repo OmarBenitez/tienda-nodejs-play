@@ -1,0 +1,64 @@
+*{
+ * Tag Para manejar las acciones en los list.html de los catálogos
+ *
+ * @author Enrique Ruiz
+ * @version 1
+ * @since 30/07/2014
+ }*
+ 
+ <div class="acciones">
+     #{if _objectId}
+        #{form _delete, method:'DELETE', id:'eliminar_'+_objectId}
+        <div class="btn-group">
+            <button class="btn btn-default btn-xs btn-acciones" type="button">
+                &{'acciones'}
+            </button>
+            <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul role="menu" class="dropdown-menu pull-right">
+                #{if _show}
+                    <li>
+                        <a href="${_show}"><i class="fa fa-pencil"></i>&{'editar'}</a>
+                    </li>
+                    <li class="divider"></li>
+                #{/if}
+                <li>                                   
+                    <a href="#" onclick="document.getElementById('eliminar_${_objectId}').submit(); return false;"><i class="fa fa-trash-o"></i>&{'eliminar'}</a>                            
+                </li>
+                <li class="divider"></li> 
+                <li>                                   
+                    <a href="@{Application.history(_objectId)}"><i class="fa fa-history"></i>&{'historial'}</a>                            
+                </li>
+                #{doBody /}
+            </ul>                           
+        </div> 
+        #{/form }
+    #{/if}
+    #{else}
+        <div class="btn-group">
+            <button class="btn btn-default btn-xs btn-acciones" type="button">
+                &{'acciones'}
+            </button>
+            <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul role="menu" class="dropdown-menu pull-right">
+                #{if _show}
+                    <li>
+                        <a href="${_show}"><i class="fa fa-pencil"></i>&{'editar'}</a>
+                    </li>
+                    <li class="divider"></li>
+                #{/if}
+                <li>                                   
+                    <a href="@{Application.history(_objectId)}"><i class="fa fa-history"></i>&{'historial'}</a>                            
+                </li>
+                #{doBody /}
+            </ul>                           
+        </div> 
+    
+    #{/else}
+</div>
+

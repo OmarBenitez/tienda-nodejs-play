@@ -1,0 +1,17 @@
+#{field 'object.' + _name}
+    <div class="form-group-box">
+        #{if !_disabled}
+            <div class="form-group check-box floating-label-form-group">
+                <label for="${field.id}" class="col-md-2 control-label switcher-label">&{_name}:</label>
+        #{/if}
+            <div class="switcher switcher-theme-square switcher-sm#{if _disabled} disabled#{/if}"> <!-- col-md-8 -->
+                <input id="${field.id}" class="settings-switcher form-control" data-class="switcher-sm" type="checkbox" name="${field.name}" 
+                    #{if _value.booleanValue()} checked="true" #{/if}
+                    #{if _disabled}disabled="disabled" #{/if}>
+                <input type="hidden" name="${field.name}" value="false">
+            </div>
+        #{if !_disabled}
+            </div>
+        #{/if}
+    </div>
+#{/field}

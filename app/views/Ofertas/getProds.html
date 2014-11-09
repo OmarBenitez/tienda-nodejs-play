@@ -1,15 +1,18 @@
+
+
 #{extends 'main.html' /}
 #{set title:'Home' /}
 <ul class="breadcrumb breadcrumb-page">
     <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
-    <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
+    <li> <a  href="@{Ofertas.list}">Ofertas</a></li>
+    <li class="active"> <a  href="@{Ofertas.getProds(oferta.id)}">Productos</a></li>
 </ul>
 <div class="container" id="crudListTable">
     <div>
-        <h2 class="footer-title">
+        <h4>
             Lista De Productos
-        </h2>
-        <a class="btn btn-inverse pull-right" href="@{blank(oferta.id)}">Nuevo</a>
+        </h4>
+        <a class="btn btn-inverse pull-right" href="@{blank()}">Nuevo</a>
         <table class="table table-bordered">
             <thead>
                 <th>Nombre</th>
@@ -18,7 +21,7 @@
                 <th>Tipo</th>
             </thead>
             <tbody>
-                #{paginate.list items:producto, as:'pro'}
+                #{paginate.list items:objects, as:'pro'}
                     <tr>
                         <td>${pro.nombre}</td>
                         <td>${pro.descripcion}</td>

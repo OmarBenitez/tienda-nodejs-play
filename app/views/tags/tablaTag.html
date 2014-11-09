@@ -1,0 +1,64 @@
+<div class="tablas-info">    
+    <div class="tabla-titulo">
+        <h2 class="titulo-lg">
+            <i class="${_icono}"></i> &{_encabezado} <strong>&{_titulo}</strong>
+        </h2>
+        <h2 class="titulo-sm">
+            <strong rel="tooltip" data-placement="top" data-original-title="&{_encabezado} &{_titulo}">
+                <i class="${_icono}"></i>
+            </strong>
+        </h2>
+        <div class="tabla-buttons">
+            
+            <a class="button-adicional" href="#" data-toggle="collapse" data-target="#tabla-data" rel="tooltip" data-placement="top" data-original-title="&{'colapsar'}">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+
+            <a class="button-adicional dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" rel="tooltip" data-placement="top" data-original-title="&{'imprimir'}">
+                <i class="fa fa-print"></i>
+
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                #{if _reporte_pdf}
+                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="${_reporte_pdf}"><i class="fa fa-file-pdf-o"></i> PDF</a></li>
+                #{/if}
+                #{if _reporte_pdf && _reporte_xls}
+                <li role="presentation" class="divider"></li>
+                #{/if}
+                #{if _reporte_xls}
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="${_reporte_xls}"><i class="fa fa-file-excel-o"></i> XLS</a></li>
+                #{/if}
+            </ul>
+
+
+            <a class="button-adicional" id="bitacoraButton" href="#responsive-bitacora" rel="tooltip" data-placement="top" data-toggle="modal" data-original-title="&{'bitacora'}">
+                <i class="fa fa-history"></i>
+            </a>
+
+
+            
+            #{if _button != false}
+                #{if _isModal}
+                    <a href="${_enlace}" data-toggle="modal" class="btn btn-primary btn-sm btn-new"><i class="fa fa-plus"></i> &{_button_title}</a>
+                    <a href="${_enlace}" class="btn btn-primary btn-sm btn-new btn-new-responsive" rel="tooltip" data-placement="top" data-toggle="modal" data-original-title="&{_button_title}">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                #{/if}
+                #{if _isModal == false}
+                    <a href="${_enlace}" class="btn btn-primary btn-sm btn-new"><i class="fa fa-plus"></i> &{_button_title}</a>
+                    <a href="${_enlace}" class="btn btn-primary btn-sm btn-new btn-new-responsive" rel="tooltip" data-placement="top" data-original-title="&{_button_title}">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                #{/if}
+            #{/if}
+
+        </div>
+    </div>
+    <div id="tabla-data" class="in">        
+        <div class="table-responsive tabla">
+            #{doBody /}
+        </div>
+    </div>
+</div>
+
+#{bitacoraTag titulo:_titulo, tipo:_tipo/}

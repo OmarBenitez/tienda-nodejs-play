@@ -1,0 +1,14 @@
+#{if _permission}
+    #{secure.check _permission}
+        <li class="divider"></li>
+        <li>
+            <a href="${_link}"><i class="${_icon}"></i>&{_name}</a>
+        </li>
+    #{/secure.check}
+#{/if}
+#{else}
+    <li class="divider"></li>
+    <li>
+        <a href="${_link}"><i class="${_icon}"></i>&{_name}</a>
+    </li>
+#{/else}

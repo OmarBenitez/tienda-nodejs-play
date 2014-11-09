@@ -1,0 +1,21 @@
+#{field 'object.' + _name}
+
+<div class="form-group-box">
+    <div class="form-group floating-label-form-group #{if !_id} floating-label #{/if}">
+        <label for="${field.id}" class="col-md-2 control-label">
+            &{_name}:
+        </label>    
+        <div class="col-md-8">
+            <div class="input-group">
+                <input ng-model="localidadSeleccionada.idAsStr" ng-show='false' name="${field.name}._id"/>
+                <input ng-model="localidadSeleccionada.descripcion" type="text" id="${field.id}" name="descripcion" value="${_value}" placeholder="&{_name}"
+                       class="form-control label-float #{ifError field.name} ${field.error.raw().toString().replaceAll("\\s", "")} #{/ifError}"  disabled="disabled">
+                       <span class="input-group-btn">
+                    <a class="btn btn-primary" href="#localidades-select" data-toggle="modal"><i class="fa fa-globe"></i></a>
+                </span>
+            </div>
+        </div>           
+    </div>
+</div>
+#{/field}
+

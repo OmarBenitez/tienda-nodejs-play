@@ -1,6 +1,9 @@
 package models;
 
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import models.enums.SubTipo;
 import play.data.validation.Required;
 import play.modules.morphia.Model;
@@ -25,8 +28,10 @@ public class Producto extends Model{
 
     public String urlImg;
 
+    @Enumerated(EnumType.ORDINAL)
     public SubTipo tipoProducto;
 
+    @Reference
     public Oferta oferta;
 
     /**

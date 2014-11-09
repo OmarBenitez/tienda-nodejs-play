@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+
+
+<div class="container">
+    #{form action:@create(), enctype:'multipart/form-data', class:'form-horizontal'}
+    <div id="form-data" class="in col-md-12 col-xs-12" style="padding-top: 50px">
+        <h1 class="col-md-12">Nueva Oferta</h1>
+        #{crud.form fields:['clave','descripcion']}
+        <div class="row">
+            #{crud.custom 'clave'}
+            #{textFieldCustom name:'clave', value:object?.clave/}
+            #{/crud.custom}
+            #{crud.custom 'descripcion'} 
+            #{textFieldCustom name:'descripcion', value:object?.descripcion/}
+            #{/crud.custom}
+        </div>            
+
+        #{/crud.form}    
+        <button class="btn btn-primary col-md-offset-8 col-md-2" type="submit" name="_save" ><i class="fa fa-download"></i> &{'crud.save', type.modelName}</button>
+
+        #{/form}
+    </div>
+</div>
