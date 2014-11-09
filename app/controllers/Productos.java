@@ -6,15 +6,19 @@
 package controllers;
 
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
 import java.util.List;
 import models.Producto;
+import models.enums.TipoProducto;
+import play.modules.paginate.ValuePaginator;
 import play.mvc.Controller;
 
 /**
  *
  * @author omar
  */
-public class Productos extends Controller {
+public class Productos extends CRUD  {
 
     public static void json() {
         List<Producto> productos = Producto.findAll();
@@ -25,6 +29,19 @@ public class Productos extends Controller {
         Producto producto = Producto.findById(uuid);
         notFoundIfNull(producto);
         renderJSON(producto);
+    }
+
+    public static void list(){
+        List<Producto> productos = Producto.findAll();
+        ValuePaginator producto = new ValuePaginator(productos);
+        render(producto);
+    }
+
+    public static void save(String nombre, String descripcion, String precio, String img){
+        Double pre = Double.valueOf(precio);
+        Producto producto = new Producto(
+          nombre, descripcion, pre, img);
+        producto.validateAndSave();
     }
     
     public static void add(){
@@ -37,6 +54,11 @@ public class Productos extends Controller {
         
         renderJSON(p);
         
+    }
+
+    public static void blank(){
+        List<TipoProducto> tipoProductos = new ArrayList<>();
+        render(tipoProductos);
     }
 
 }

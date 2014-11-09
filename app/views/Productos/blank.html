@@ -1,0 +1,18 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<ul class="breadcrumb breadcrumb-page">
+    <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
+    <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
+</ul>
+<div class="container" id="crudListTable">
+    <div>
+        <h2 class="footer-title">
+            Agregar Productos
+        </h2>
+        #{form action:@create(), enctype :'multipart/form-data'}
+
+            #{crud.form fields:['nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
+            #{/crud.form}
+        #{/form}
+    </div>
+</div>

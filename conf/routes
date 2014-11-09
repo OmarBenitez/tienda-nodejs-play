@@ -8,6 +8,7 @@
 GET     /                                       Application.index
 GET     /productos.json                         Productos.json
 POST    /add/prod                               Productos.add
+GET     /productos/list                         Productos.list
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -3,6 +3,7 @@ package models;
 import com.google.code.morphia.annotations.Entity;
 import play.data.validation.Required;
 import play.modules.morphia.Model;
+import models.enums.TipoProducto;
 
 /**
  *
@@ -23,6 +24,10 @@ public class Producto extends Model{
     public Double precio;
 
     public String urlImg;
+
+    public TipoProducto tipoProducto;
+
+    public Oferta oferta;
 
     /**
      * Constructor del Producto

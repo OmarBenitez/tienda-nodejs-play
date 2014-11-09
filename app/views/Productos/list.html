@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<ul class="breadcrumb breadcrumb-page">
+    <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
+    <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
+</ul>
+<div class="container" id="crudListTable">
+    <div>
+        <h2 class="footer-title">
+            Lista De Productos
+        </h2>
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th></th>
+                <th>Tipo</th>
+            </thead>
+            <tbody>
+                #{paginate.list items:producto, as:'pro'}
+                    <tr>
+                        <td>${pro.nombre}</td>
+                        <td>${pro.descripcion}</td>
+                        <td>${pro.precio}</td>
+                        <td>${pro.urlImg}</td>
+                        <td>${pro.tipo}</td>
+                    </tr>
+                #{/paginate.list}
+            </tbody>
+        </table>
+    </div>
+</div>
