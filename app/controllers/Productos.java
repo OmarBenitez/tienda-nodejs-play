@@ -6,13 +6,12 @@
 package controllers;
 
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 import models.Producto;
+import models.enums.SubTipo;
 import models.enums.TipoProducto;
 import play.modules.paginate.ValuePaginator;
-import play.mvc.Controller;
 
 /**
  *
@@ -57,7 +56,7 @@ public class Productos extends CRUD  {
     }
 
     public static void blank(){
-        List<TipoProducto> tipoProductos = new ArrayList<>();
+        List<SubTipo> tipoProductos = new ArrayList<>();
         render(tipoProductos);
     }
 

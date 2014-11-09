@@ -27,10 +27,10 @@ public class Usuarios extends CRUD {
         Perfil perfil = Perfil.find("clave", "CLIENTE").first();
         Usuario u = Usuario.find("email", email).first();
 
-        if(perfil == null){
+        if (perfil == null) {
             perfil = new Perfil("CLIENTE", "Perfil para el cliente comun");
         }
-        
+
         if (u != null) {
             try {
                 Secure.authenticate(email, password, true);
@@ -39,10 +39,10 @@ public class Usuarios extends CRUD {
             }
         } else {
             Usuario usuario = new Usuario(
-                    email, 
-                    nombre, 
-                    DigestUtils.md5Hex(password), 
-                    aPat, 
+                    email,
+                    nombre,
+                    DigestUtils.md5Hex(password),
+                    aPat,
                     aMat,
                     perfil
             );

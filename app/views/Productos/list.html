@@ -9,7 +9,7 @@
         <h2 class="footer-title">
             Lista De Productos
         </h2>
-        <table>
+        <table class="table">
             <thead>
                 <th>Nombre</th>
                 <th>Descripcion</th>
@@ -24,7 +24,7 @@
                         <td>${pro.descripcion}</td>
                         <td>${pro.precio}</td>
                         <td>${pro.urlImg}</td>
-                        <td>${pro.tipo}</td>
+                        <td>${pro.tipoProducto}</td>
                     </tr>
                 #{/paginate.list}
             </tbody>

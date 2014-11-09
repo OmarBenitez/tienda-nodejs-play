@@ -1,9 +1,9 @@
 package models;
 
 import com.google.code.morphia.annotations.Entity;
+import models.enums.SubTipo;
 import play.data.validation.Required;
 import play.modules.morphia.Model;
-import models.enums.TipoProducto;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Producto extends Model{
 
     public String urlImg;
 
-    public TipoProducto tipoProducto;
+    public SubTipo tipoProducto;
 
     public Oferta oferta;
 

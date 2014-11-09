@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Crear Usuario' /}
+
+<div class="container" id="login-block">
+    <div class="row">
+        #{paginate.list items:objects, as:'object'}
+            ${object.nombre}
+        #{/paginate.list}
+    </div>
+</div>
