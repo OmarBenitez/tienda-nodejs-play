@@ -1,0 +1,59 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+
+            <div class="login-box clearfix animated flipInY">
+                <div class="page-icon animated bounceInDown">
+                    <img src="@{'public/img/icons/png/user-icon.png'}" alt="Key icon">
+                </div>
+                <div class="login-logo">
+                    <a href="#?login-theme-1"><img src="@{'public/img/icons/svg/loop.svg'}" alt="Company Logo"></a>
+                </div> 
+                <hr>
+                <div class="login-form">
+                    <!-- Start Error box -->
+                    <div class="alert alert-danger hide">
+                        <button type="button" class="close" data-dismiss="alert"> ×</button>
+                        <h4>Error!</h4>
+                        Usuario y/o password invalidos
+                    </div> <!-- End Error box -->
+                    <form action="" method="get" role="form">
+                        <div class="form-group">
+                            <input type="text" placeholder="User name" class="form-control" required=""> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="User name" class="form-control" required=""> 
+                        </div>
+                        <button type="submit" class="btn btn-login">Login</button> 
+                    </form>	
+                    <div class="login-links"> 
+                        <a href="forgot-password.html?login-theme-1">
+                            Forgot password?
+                        </a>
+                        <br>
+                        <a href="sign-up.html?login-theme-1">
+                            Don't have an account? <strong>Sign Up</strong>
+                        </a>
+                    </div>      		
+                </div> 			        	
+            </div>
+
+            <!-- Start Social connect buttons box --> 
+
+            <!-- <div class="social-login row">
+                             <div class="fb-login col-lg-6 col-md-12 animated flipInX">
+                                     <a href="#" class="btn btn-facebook btn-block">Connect with <strong>Facebook</strong></a>
+                             </div>
+                             <div class="twit-login col-lg-6 col-md-12 animated flipInX">
+                                     <a href="#" class="btn btn-twitter btn-block">Connect with <strong>Twitter</strong></a>
+                             </div>
+             </div> -->
+
+            <!-- End Social connect buttons box -->
+
+        </div>
+    </div>
+</div>
