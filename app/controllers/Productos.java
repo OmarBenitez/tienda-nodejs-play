@@ -32,8 +32,9 @@ public class Productos extends CRUD  {
         Oferta oferta = Oferta.findById(id);
         oferta = oferta == null ? Oferta.getDefault() : oferta;
         List<Producto> productos = oferta.getProds();
-        ValuePaginator producto = new ValuePaginator(productos);
-        render(producto, oferta);
+        productos = Producto.findAll();
+        ValuePaginator objects = new ValuePaginator(productos);
+        render(objects, oferta);
     }
 
     public static void save(String nombre, String descripcion, String precio, String img){
@@ -49,6 +50,11 @@ public class Productos extends CRUD  {
         Producto object = new Producto();
         object.oferta = oferta;
         render(object);
+    }
+    
+    public static void json(){
+        List<Producto> productos = Producto.find().asList();
+        renderJSON(productos);
     }
 
 }

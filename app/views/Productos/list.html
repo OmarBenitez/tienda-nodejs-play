@@ -1,32 +1,122 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-<ul class="breadcrumb breadcrumb-page">
-    <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
-    <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
-</ul>
-<div class="container" id="crudListTable">
-    <div>
-        <h2 class="footer-title">
-            Lista De Productos
-        </h2>
-        <a class="btn btn-inverse pull-right" href="@{blank(oferta.id)}">Nuevo</a>
-        <table class="table table-bordered">
-            <thead>
+#{navbarTag /}
+
+<div class="container" id="crudListTable" style="padding-top: 55px;">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
+        <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
+    </ul>
+
+    <!--    <div class="panel panel-default">
+             Default panel contents 
+            <div class="panel-heading">Productos 
+                <a class="btn btn-inverse btn-sm pull-right" href="@{blank(oferta.id)}">Nuevo</a>
+                <div class="col-md-2 pull-right">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <table class="table table-bordered table table-hover table-striped table-datos">
+                <thead>
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
                 <th>Tipo</th>
-            </thead>
-            <tbody>
-                #{paginate.list items:producto, as:'pro'}
+                </thead>
+                <tbody>
+                    #{paginate.list items:producto, as:'pro'}
                     <tr>
                         <td>${pro.nombre}</td>
                         <td>${pro.descripcion}</td>
                         <td>${pro.precio}</td>
                         <td>${pro.tipoProducto}</td>
                     </tr>
-                #{/paginate.list}
-            </tbody>
-        </table>
+                    #{/paginate.list}
+                </tbody>
+            </table>
+        </div>-->
+
+    <div class="tablas-info">    
+        <div class="tabla-titulo">
+            <h2>
+                Catálogo <strong>Productos</strong>
+            </h2>
+            <h2 class="titulo-sm">
+                <strong rel="tooltip" data-placement="top" data-original-title="CompromisosInternacionales">
+                    <i class="fa fa-globe"></i>
+                </strong>
+            </h2>
+            <div class="tabla-buttons">
+                <div class="searchInput">
+                    <form action="@{Productos.list()}" method="get" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" class="ng-pristine ng-valid">                    <i class="fa fa-search"></i>
+                        <input type="text" class="search-query search" id="search" name="search" placeholder="Buscar...">
+
+                    </form>          
+                </div>
+
+                <a href="@{Productos.blank()}" class="btn btn-primary btn-sm btn-new">
+                    <i class="fa fa-plus"></i> Nuevo</a>
+            </div>
+        </div>
+        <div id="tabla-data" class="in">      
+            <div class="table-responsive">
+                <div>
+                    <table class="table table-hover table-striped table-datos">
+                        <thead>
+                            <tr>
+                                <th> Clave </th>
+                                <th> Nombre </th>
+                                <th> Precio </th>
+                                <th> Imagen </th>
+                                <th>  </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #{paginate.list items:objects, as:'object'}
+                            <tr class="odd">   
+                                <td>
+                                    <a href="@{show(object.id)}"> ${object?.clave} </a>
+                                </td>
+                                <td>
+                                    ${object.descripcion}
+                                </td>
+                                <td>
+                                    $ ${object.precio}
+                                </td>
+                                <td>
+                                    <img src="${object.urlImg}" style="height: 20px;">
+                                </td>                                                
+                                <td>
+                                    <div class="acciones">
+                                        <form action="@{delete(object.id)}" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" id="eliminar_${object.id}" >
+                                            <div class="btn-group">
+                                                <button class="btn btn-default btn-xs" type="button">
+                                                    Acciones
+                                                </button>
+                                                <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul role="menu" class="dropdown-menu pull-right ">
+                                                    <li>
+                                                        <a href="@{show(object.id)}"><i class="fa fa-pencil"></i>Editar</a>
+                                                    </li>
+                                                    <li>                                   
+                                                        <a href="#" onclick="document.getElementById('eliminar_${object.id}').submit();
+                                                                return false;"><i class="fa fa-trash-o"></i>Eliminar</a>                            
+                                                    </li>
+                                                </ul>                           
+                                            </div> 
+                                        </form>        
+                                    </div>
+                                </td> 
+                            </tr>
+                            #{/paginate.list}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

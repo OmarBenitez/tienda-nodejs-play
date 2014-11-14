@@ -6092,12 +6092,18 @@ footer p {
 }
 
 .login-logo{
-    text-align: center;
-    padding: 15px 0 10px;
     font-family: 'Engagement';
-    font-size: 60px;
 }
 
+.login-logo a {
+    text-transform: capitalize !important;
+    font-size: 200%;
+}
+
+.login-box .login-logo {
+    text-align: center;
+    font-size: 40px;
+}
 .login-logo img{
     border:0;
     display: inline-block;

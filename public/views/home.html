@@ -1,5 +1,5 @@
 <div class="thumbnails list">
-    <div class="item" ng-repeat="p in prods">
+    <div class="item wow bounceInUp" ng-repeat="p in prods">
         <div class="thumbnail">
             <img ng-src="{{p.urlImg}}">
             <div class="caption">
@@ -10,3 +10,6 @@
         </div>
     </div>
 </div>
+<script>
+ new WOW().init();
+</script>

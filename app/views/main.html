@@ -30,57 +30,16 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.ico'}">
     </head>
     <body>
-        <div class="container">
-            <ul id="gn-menu" class="gn-menu-main">
-                <li class="gn-trigger">
-                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-                    <nav class="gn-menu-wrapper">
-                        <div class="gn-scroller">
-                            <ul class="gn-menu">
-                                <li class="gn-search-item">
-                                    <input placeholder="Buscar" type="search" class="gn-search">
-                                    <a class="gn-icon gn-icon-search"><span>Buscar</span></a>
-                                </li>
-                                <li class="gn-submenu three-ch">
-                                    <a class="gn-icon gn-icon-download ">Ofertas</a>
-                                    <ul>
-                                        <li><a class="gn-icon gn-icon-illustrator">Electrónica</a></li>
-                                        <li><a class="gn-icon gn-icon-photoshop">Linea Blanca</a></li>
-                                        <li><a class="gn-icon gn-icon-photoshop">Ropa</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="gn-icon gn-icon-cog">Settings</a></li>
-                                <li><a class="gn-icon gn-icon-help">Help</a></li>
-                                <li  class="gn-submenu  three-ch" >
-                                    <a class="gn-icon gn-icon-archive">Archives</a>
-                                    <ul>
-                                        <li><a class="gn-icon gn-icon-article">Articles</a></li>
-                                        <li><a class="gn-icon gn-icon-pictures">Images</a></li>
-                                        <li><a class="gn-icon gn-icon-videos">Videos</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div><!-- /gn-scroller -->
-                    </nav>
-                </li>
-                <li><a href="/">Inicio</a></li>
-            </ul>
-        </div><!-- /container -->
-        <script src="/public/js/classie.js"></script>
-        <script src="/public/js/gnmenu.js"></script>
-        <script>
-            new gnMenu(document.getElementById('gn-menu'));
-        </script>
 
-        <div class="container" style="padding-top: 50px;">
-            #{doLayout /}
-        </div>
+        #{doLayout /}
+
         <!--        <script src="@{'/public/javascripts/jquery-2.1.1.js'}" type="text/javascript" charset="${_response_encoding}"></script>
                 <script src="@{'/public/javascripts/bootstrap.js'}" type="text/javascript" charset="${_response_encoding}"></script>-->
         <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
         <script src="@{'public/js/vendor/jquery.min.js'}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="@{'public/js/flat-ui.min.js'}"></script>
+        <script src="@{'public/js/classie.js'}"></script>
         <script src="http://localhost:1337/socket.io/socket.io.js" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>

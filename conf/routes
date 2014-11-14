@@ -6,9 +6,10 @@
 
 # Home page
 GET     /                                       Application.index
-
+GET     /administracion/index                   Administracion.index
+GET     /productos.json                         Productos.json
 GET     /productos/list/{id}                    Productos.list
-GET     /productos/blank/{id}                    Productos.blank
+GET     /productos/blank/{id}                   Productos.blank
 GET     /productos/show/{id}                    Productos.show
 
 

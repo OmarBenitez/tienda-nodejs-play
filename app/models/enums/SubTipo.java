@@ -9,9 +9,8 @@ public enum SubTipo {
     COMPUTO(TipoProducto.ELECTRONICA, "Computadora"),
     VIDEOJUEGOS(TipoProducto.ELECTRONICA, "Video Juegos"),
     CAMARAS(TipoProducto.ELECTRONICA, "Camaras"),
-    CDS(TipoProducto.ELECTRONICA, "CD's"),
 
-    CAMISAS(TipoProducto.ROPA, "Caisas"),
+    CAMISAS(TipoProducto.ROPA, "Camisas"),
     BLUSAS(TipoProducto.ROPA, "Blusas"),
     PANTALONES(TipoProducto.ROPA, "Pantalones"),
     SHORTS(TipoProducto.ROPA, "Shorts"),
