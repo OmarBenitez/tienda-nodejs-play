@@ -11,7 +11,9 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+        List<Producto> objects = Producto.findAll();
+        List<Producto> top = Producto.top10();
+        render(objects, top);
     }
 
 }
