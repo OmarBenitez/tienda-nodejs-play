@@ -17,7 +17,7 @@
                 <li data-target="#carousel-example-generic" data-slide-to="7"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="8"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="9"></li>
-                
+
             </ol>
 
             <!-- Wrapper for slides -->
@@ -28,11 +28,11 @@
                     </div>
                 </div>
                 #{paginate.list items:top, as:'producto'}
-                <div class="item" style="background-image: url(${producto.urlImg})">
+                <a href="@{Productos.view(producto.id)}" class="item" style="background-image: url(${producto.urlImg})">
                     <div class="carousel-caption">
                         ${producto.nombre}
                     </div>
-                </div>
+                </a>
                 #{/paginate.list}
             </div>
 
@@ -47,7 +47,7 @@
             </a>
         </div>
     </div>
-    
+
     <!--TODO: Falta cargar los productos por categoria-->
-    
+
 </div>

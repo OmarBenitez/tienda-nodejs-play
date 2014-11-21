@@ -1,4 +1,7 @@
-#{extends 'CRUD/layout.html' /}
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{navbarTag /}
+
 <ul class="breadcrumb breadcrumb-page">
     <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
     <li><a href="@{Ejercicios.list()}"><i class="fa fa-clock-o"></i> &{'ejercicios'}</a> </li>

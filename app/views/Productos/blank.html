@@ -1,26 +1,76 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-<ul class="breadcrumb breadcrumb-page">
-    <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
-    <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
-</ul>
-<div class="container" id="crudListTable">
-    <div>
-        <h2 class="footer-title">
-            Agregar Productos
-        </h2>
-        #{form action:@create(), enctype :'multipart/form-data'}
+#{navbarTag /}
+<div class="container ptop">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
+        <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
+    </ul>
+    <div class="container" id="crudListTable">
+        <div>
+            <h2 class="footer-title">
+                Agregar Productos
+            </h2>
+            #{form action:@create(), enctype :'multipart/form-data', class:'form-horizontal'}
 
-        #{crud.form fields:['nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
+            #{crud.form fields:['clave', 'nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
+            #{crud.custom 'clave'}
+            <div class="form-group">
+                <label for="object_nombre" class="col-lg-2 control-label">Clave:</label>
+                <div class="col-lg-10">
+                    <input id="object_clave" class="form-control" type="text" name="object.clave" value="" size="10">
+                </div>
+            </div>
+            #{/crud.custom}
+            #{crud.custom 'nombre'}
+            <div class="form-group">
+                <label for="object_nombre" class="col-lg-2 control-label">Nombre:</label>
+                <div class="col-lg-10">
+                    <input id="object_nombre" class="form-control" type="text" name="object.nombre" value="" size="50">
+                </div>
+            </div>
+            #{/crud.custom}
+            #{crud.custom 'precio'}
+            <div class="form-group">
+                <label for="object_precio" class="col-lg-2 control-label">Precio:</label>
+                <div class="col-lg-10">
+                    <input id="object_precio" class="form-control" type="text" name="object.precio">
+                </div>
+            </div>
+            #{/crud.custom}
 
-        #{crud.custom 'oferta'}
-        <input type="hidden" value="${object.oferta._id}" name ="object.oferta._id">
-        #{/crud.custom}
+            #{crud.custom 'descripcion'}
+            <div class="form-group">
+                <label for="object_precio" class="col-lg-2 control-label">Descripcion:</label>
+                <div class="col-lg-10">
+                    <textarea name="object.descripcion" class="form-control contentarea"></textarea>
+                </div>
+            </div>
 
-        #{/crud.form}
+            #{/crud.custom}
 
-        <button type="submit"> Aceptar</button>
+            #{crud.custom 'urlImg'}
+            <div class="form-group">
+                <label for="object_urlImg" class="col-lg-2 control-label">Url Imagen:</label>
+                <div class="col-lg-10">
+                    <input id="object_urlImg" class="form-control" type="text" name="object.urlImg">
+                </div>
+            </div>
+            #{/crud.custom}
 
-        #{/form}
-    </div>
+            #{crud.custom 'tipoProducto'}
+            #{enumTag name:'genero', value:'object.genero', items:models.enums.SubTipo, currentType:type /}
+            #{/crud.custom}
+
+            #{crud.custom 'oferta'}
+                <input type="hidden" value="${object.oferta?._id}" name ="object.oferta._id">
+            #{/crud.custom}
+
+            #{/crud.form}
+
+            <button type="submit" class="btn btn-primary"> Aceptar</button>
+
+            #{/form}
+        </div>
+    </div>    
 </div>

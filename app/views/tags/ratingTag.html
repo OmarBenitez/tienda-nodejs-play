@@ -1,0 +1,57 @@
+#{if _rate < 1}
+<p>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star-o"></span>
+    <span class="fa fa-star-o"></span>
+    <span class="fa fa-star-o"></span>
+    <span class="fa fa-star-o"></span>
+    ${_rate} stars
+</p>
+#{/if}
+#{else}
+    #{if _rate < 2}
+        <p>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star-o"></span>
+            <span class="fa fa-star-o"></span>
+            <span class="fa fa-star-o"></span>
+            ${_rate} stars
+        </p>
+    #{/if}
+    #{else}
+        #{if _rate < 3}
+            <p>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star-o"></span>
+                <span class="fa fa-star-o"></span>
+                ${_rate} stars
+            </p>
+
+        #{/if}
+        #{else}
+            #{if _rate < 4}
+                <p>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star-o"></span>
+                    ${_rate} stars
+                </p>
+            #{/if}
+            #{else}
+                <p>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    ${_rate} stars
+                </p>
+            #{/else}
+        #{/else}
+    #{/else}
+#{/else}

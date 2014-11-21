@@ -36,12 +36,10 @@ public class Productos extends CRUD  {
         ValuePaginator objects = new ValuePaginator(productos);
         render(objects, oferta);
     }
-
-    public static void save(String nombre, String descripcion, String precio, String img){
-        Double pre = Double.valueOf(precio);
-        Producto producto = new Producto(
-          nombre, descripcion, pre, img);
-        producto.validateAndSave();
+    
+    public static void view(String id){
+        Producto object = Producto.findById(id);
+        render(object);
     }
     
 

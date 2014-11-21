@@ -1,36 +1,40 @@
 #{extends 'main.html' /}
+#{set title:'Home' /}
+#{navbarTag /}
 
-<ul class="breadcrumb breadcrumb-page">
-    <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'Inicio'}</a></li>
-    <li class="active"><a href="@{Ofertas.list()}">&{'Ofertas'}</a> </li>
-</ul>
-<h3>Ofertas</h3> 
-<div class="">
-    <a href="@{blank()}"><button class="btn btn-inverse pull-right">Nueva</button></a>
-    <table class="table">
-        <thead>
-        <th>Clave</th>
-        <th>Descripción</th>
-        <th></th>
-        </thead>
-        <tbody>
-            #{paginate.list items:objects, as:'object'}
-            <tr>
-                <td>${object.clave}</td>
-                <td>${object.descripcion}</td>
-                <td>
-                    <div class="btn-group">
-                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Acciones <span class="caret"></span></button>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="@{show(object.id)}"><i class="fa fa-pencil"></i> Editar</a></li>
-                            <li><a href="@{getProds(object.id)}"><i class="fui-exit"></i> Ver productos</a></li>
-                            <li class="divider"></li>
-                            <li><a href="@{delete(object.id)}"><i class="fui-trash"></i> Borrar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            #{/paginate.list}
-        </tbody>
-    </table>
+<div class="container ptop">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'Inicio'}</a></li>
+        <li class="active"><a href="@{Ofertas.list()}">&{'Ofertas'}</a> </li>
+    </ul>
+    <h3>Ofertas</h3> 
+    <div class="">
+        <a href="@{blank()}"><button class="btn btn-inverse pull-right">Nueva</button></a>
+        <table class="table">
+            <thead>
+            <th>Clave</th>
+            <th>Descripción</th>
+            <th></th>
+            </thead>
+            <tbody>
+                #{paginate.list items:objects, as:'object'}
+                <tr>
+                    <td>${object.clave}</td>
+                    <td>${object.descripcion}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Acciones <span class="caret"></span></button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="@{show(object.id)}"><i class="fa fa-pencil"></i> Editar</a></li>
+                                <li><a href="@{Productos.list(object.id)}"><i class="fui-exit"></i> Ver productos</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@{delete(object.id)}"><i class="fui-trash"></i> Borrar</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                #{/paginate.list}
+            </tbody>
+        </table>
+    </div>
 </div>

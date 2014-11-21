@@ -37,6 +37,8 @@ public class Producto extends Model {
 
     @Reference
     public Oferta oferta;
+    
+    public Integer rating;
 
     /**
      * Constructor del Producto
