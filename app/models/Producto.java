@@ -60,9 +60,10 @@ public class Producto extends Model {
      */
     public Producto() {
         this.urlImg = "http://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+        this.rating = 5;
     }
 
     public static List<Producto> top10() {
-        return Producto.find().limit(10).asList();
+        return Producto.find().order("-rating").limit(10).asList();
     }
 }

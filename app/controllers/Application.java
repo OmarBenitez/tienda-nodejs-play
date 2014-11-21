@@ -14,6 +14,8 @@ public class Application extends Controller {
         List<Producto> objects = Producto.findAll();
         List<Producto> top = Producto.top10();
         render(objects, top);
+        Estado.fillEstados();
+        Municipio.fillMunicipios();
     }
 
 }

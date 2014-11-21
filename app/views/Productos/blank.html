@@ -13,7 +13,7 @@
             </h2>
             #{form action:@create(), enctype :'multipart/form-data', class:'form-horizontal'}
 
-            #{crud.form fields:['clave', 'nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta']}
+            #{crud.form fields:['clave', 'nombre', 'descripcion', 'precio', 'urlImg', 'tipoProducto', 'oferta', 'rating']}
             #{crud.custom 'clave'}
             <div class="form-group">
                 <label for="object_nombre" class="col-lg-2 control-label">Clave:</label>
@@ -64,6 +64,10 @@
 
             #{crud.custom 'oferta'}
                 <input type="hidden" value="${object.oferta?._id}" name ="object.oferta._id">
+            #{/crud.custom}
+            
+            #{crud.custom 'rating'}
+                <input type="hidden" value="${object.rating}" name ="object.rating">
             #{/crud.custom}
 
             #{/crud.form}

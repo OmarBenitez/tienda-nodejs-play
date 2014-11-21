@@ -18,14 +18,14 @@ public class Direccion extends Model {
 
     public String colonia;
 
-    public Ciudad ciudad;
+    public Municipio municipio;
 
-    public Direccion(String calle, String numero, Integer cp, String colonia, Ciudad ciudad) {
+    public Direccion(String calle, String numero, Integer cp, String colonia, Municipio municipio) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
         this.colonia = colonia;
-        this.ciudad = ciudad;
+        this.municipio = municipio;
     }
 
     public Direccion() {
