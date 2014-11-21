@@ -1,0 +1,12 @@
+#{extends 'single.html' /}
+<ul class="breadcrumb breadcrumb-page">
+    <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
+    <li><a href="@{seguridad.Perfiles.list}"><i class="fa fa-unlock"></i> &{'perfiles'}</a> </li>
+    <li class="active"><a href="@{seguridad.Perfiles.show(perfil.id)}"><i class="fa fa-pencil"></i> &{'editar'}</a> </li>
+    <li class="active"><a href="@{seguridad.Perfiles.reportes(perfil.id)}"><i class="fa fa-file-o"></i> &{'reportes'}</a> </li>
+</ul>
+
+#{form @seguridad.Perfiles.addReportes(perfil.id), method:'POST', id:'agregarOpciones',enctype:'multipart/form-data' }
+    #{checkListTag relacion1:'reportes-del', relacion2:perfil, fields:['clave','descripcion','modulo','clasificacionReporte','activo'], objects:reportes, field:'activo', icon:'fa fa-file-o'/}
+#{/form}
+

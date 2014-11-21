@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{navbarTag /}
+
+<div class="container ptop">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
+        <li><a href="@{Perfiles.list}"><i class="fa fa-unlock"></i> &{'perfiles'}</a> </li>
+        <li class="active"><a href="@{Perfiles.show(object.id)}"><i class="fa fa-plus"></i> &{'nuevo'}</a> </li>
+    </ul>
+    <div class="form" ng-app>
+        #{formTitleTag icon:'fa fa-unlock', type:'nuevo', title:'Perfil' /}
+        #{form action:@save(object._key()), enctype:'multipart/form-data', class:'form-horizontal'}       
+        <div id="form-data" class="in">
+            #{crud.form fields:['clave','descripcion']}
+            <div class="row">
+                #{crud.custom 'clave'}
+                    #{textFieldCustom name:'clave', value:object?.clave, currentType:type, currentType:type/} 
+                #{/crud.custom}
+
+                #{crud.custom 'descripcion'} 
+                    #{textFieldCustom name:'descripcion', value:object?.descripcion, currentType:type, currentType:type/} 
+                #{/crud.custom}
+            </div>            
+            #{/crud.form}    
+        </div>
+        <div class="form-footer">
+            <button class="btn btn-primary col-md-2 col-md-offset-10" type="submit" name="_save" ><i class="fa fa-download"></i> &{'crud.save', type.modelName}</button>
+        </div>
+        #{/form}
+    </div>
+</div>

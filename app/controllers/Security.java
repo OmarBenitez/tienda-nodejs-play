@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Perfil;
+import models.Permiso;
 import models.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -16,6 +18,7 @@ public class Security extends Secure.Security {
             flash.error("secure.error", user);
         } else {
             if (user.password.equalsIgnoreCase(DigestUtils.md5Hex(password))) {
+                session.put(Application.PERFIL_HASH, user.getIdAsStr());
                 return true;
             } else {
                 flash.error("secure.error", user);
@@ -24,4 +27,15 @@ public class Security extends Secure.Security {
         return false;
     }
 
+    public static boolean check(String profile) {
+        try{
+            Usuario usuario = Usuario.findById(session.get(Application.PERFIL_HASH));
+            Perfil perfil = usuario.perfil;
+            Permiso permiso = Permiso.find("clave", profile).first();
+            return perfil.tieneDerecho(permiso);
+        }catch(Exception ex){
+            return false;
+        }
+    }
+     
 }

@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{navbarTag /}
+
+<div class="container ptop">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
+        <li><a href="@{Perfiles.list}"><i class="fa fa-unlock"></i> &{'perfiles'}</a> </li>
+        <li class="active"><a href="@{Perfiles.show(perfil.id)}"><i class="fa fa-pencil"></i> &{'editar'}</a> </li>
+        <li class="active"><a href="@{Perfiles.permisos(perfil.id)}"><i class="fa fa-sliders"></i> &{'permisos'}</a> </li>
+    </ul>
+
+    #{form @Perfiles.addPermisos(perfil.id), method:'POST', id:'agregarOpciones',enctype:'multipart/form-data' }
+        #{checkListTag relacion1:'permisos-del', relacion2:perfil, fields:['clave','descripcion','activo'], objects:permisos, field:'activo', icon:'fa fa-sliders'/}
+    #{/form}
+</div>

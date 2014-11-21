@@ -11,6 +11,7 @@ GET     /productos.json                         Productos.json
 GET     /productos/list/{id}                    Productos.list
 GET     /productos/blank/{id}                   Productos.blank
 GET     /productos/show/{id}                    Productos.show
+GET     /perfiles/list/                         Perfiles.list
 
 
 GET     /ofertas/productos/list/{id}            Ofertas.getProds

@@ -2,12 +2,12 @@
 #{set title:'Home' /}
 #{navbarTag /}
 
-<div class="container" id="crudListTable" style="padding-top: 55px;">
-    <ul class="breadcrumb breadcrumb-page">
-        <li><a href="@{Application.index}"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active"> <a  href="@{Productos.list}">Productos</a></li>
-    </ul>
 
+<div class="container ptop">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><a href="@{Application.index}"><i class="fa fa-home"></i> &{'home'}</a></li>
+        <li class="active"><a href="@{Perfiles.list}"><i class="fa fa-unlock"></i> &{'perfiles'}</a> </li>
+    </ul>
     <div class="tablas-info">    
         <div class="tabla-titulo">
             <h2>
@@ -26,7 +26,7 @@
                     </form>          
                 </div>
 
-                <a href="@{Productos.blank(oferta.id)}" class="btn btn-primary btn-sm btn-new">
+                <a href="@{Productos.blank()}" class="btn btn-primary btn-sm btn-new">
                     <i class="fa fa-plus"></i> Nuevo</a>
             </div>
         </div>
@@ -37,9 +37,7 @@
                         <thead>
                             <tr>
                                 <th> Clave </th>
-                                <th> Nombre </th>
-                                <th> Precio </th>
-                                <th> Imagen </th>
+                                <th> Descripcion </th>
                                 <th>  </th>
                             </tr>
                         </thead>
@@ -47,17 +45,12 @@
                             #{paginate.list items:objects, as:'object'}
                             <tr class="odd">   
                                 <td>
-                                    <a href="@{show(object.id)}"> ${object?.clave} </a>
+                                    <a href="@{show()}"> ${object?.clave} </a>
                                 </td>
                                 <td>
                                     ${object.descripcion}
                                 </td>
-                                <td>
-                                    $ ${object.precio}
-                                </td>
-                                <td>
-                                    <img src="${object.urlImg}" style="height: 20px;">
-                                </td>                                                
+
                                 <td>
                                     <div class="acciones">
                                         <form action="@{delete(object.id)}" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" id="eliminar_${object.id}" >
@@ -76,6 +69,9 @@
                                                     <li>                                   
                                                         <a href="#" onclick="document.getElementById('eliminar_${object.id}').submit();
                                                                 return false;"><i class="fa fa-trash-o"></i>Eliminar</a>                            
+                                                    </li>
+                                                    <li>                                   
+                                                        <a href="@{permisos(object.id)}" ><i class="fa fa-sliders"></i>Permisos</a>                            
                                                     </li>
                                                 </ul>                           
                                             </div> 
