@@ -57,3 +57,27 @@
 .ptop {
     padding-top: 80px;
 }
+
+.wrapper-products {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px;
+    display: table;
+    background-color: rgba(0,0,0,.1);
+    width: 100%;
+}
+
+.alert{
+    width: 100%;
+}
+
+.fixed-top {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.wrapper-products .thumbnail > img {
+    width: 100%;
+    height: 100px;
+}

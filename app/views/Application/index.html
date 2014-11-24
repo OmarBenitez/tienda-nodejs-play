@@ -3,7 +3,7 @@
 #{navbarTag /}
 
 <div class="container" style="padding-top: 80px;">
-    <div  ng-view class="wrapper">
+    <div  class="wrapper">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 400px;">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -48,6 +48,27 @@
         </div>
     </div>
 
-    <!--TODO: Falta cargar los productos por categoria-->
+    <div class="alert alert-info" role="alert">
+        Revisa nuestra sección de Ofertas!
+        <span class="btn btn-info btn-sm pull-right">Ir</span>
+    </div>
+
+    <div class="wrapper-products">
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img data-src="holder.js/" alt="Preview">
+                <div class="caption">
+                    <h5>Thumbnail label</h5>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info fixed-top" role="alert">
+        Ver mas productos
+        <span class="btn btn-info btn-sm pull-right">Ver mas</span>
+    </div>
 
 </div>
